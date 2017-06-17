@@ -38,8 +38,8 @@ test('yaml parser should', function (t) {
   )
 
   t.deepEquals(
-    yaml.safeLoad(`test: !GetAtt [ 'a', 'b' ]`, { schema }),
-    { test: { 'Fn::GetAtt': [ 'a', 'b' ]}},
+    yaml.safeLoad(`test: !GetAtt logicalId.attribute`, { schema }),
+    { test: { 'Fn::GetAtt': [ 'logicalId', 'attribute' ]}},
     'parse !GetAtt'
   )
 
@@ -144,7 +144,7 @@ test('yaml parser should', function (t) {
     - !If ['a', 'b' ,'c' ]
     - !ImportValue String
     - !ImportValue { Fn::Sub: "string"}
-    - !GetAtt [ 'a', b ]
+    - !GetAtt 'a.b'
     - !GetAZs String
     - !GetAZs { Ref: AWS::Region }
     - !Join [ "", ['a', 'b', 'c']]
@@ -157,7 +157,7 @@ test('yaml parser should', function (t) {
     - !Sub "stringSubstitution"
     - !Sub [ "listSubstitution", {} ]
   `, { schema })
-  t.equals(
+  t.equals(yaml.safeDump(data, {schema}), 
 `test:
   - !<!And> 
     - a
@@ -180,9 +180,7 @@ test('yaml parser should', function (t) {
   - !<!ImportValue> String
   - !<!ImportValue> 
     'Fn::Sub': string
-  - !<!GetAtt> 
-    - a
-    - b
+  - !<!GetAtt> a.b
   - !<!GetAZs> String
   - !<!GetAZs> 
     Ref: 'AWS::Region'
@@ -212,15 +210,13 @@ test('yaml parser should', function (t) {
   - !<!Sub> 
     - listSubstitution
     - {}
-`, yaml.safeDump(data, {schema}), 'dump back to yaml')    
+`, 'dump back to yaml')    
 
   t.end()
 })
 
 /* todo
 
-tests
-documentation
 readme
 repo
 review
