@@ -1,0 +1,4 @@
+test:
+  - !Ref someLogicalId
+  - !Sub A string with a substitution ${someLogicalId}
+

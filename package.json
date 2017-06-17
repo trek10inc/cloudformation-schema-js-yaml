@@ -1,0 +1,29 @@
+{
+  "name": "cloudformation-schema-js-yaml",
+  "version": "1.0.0",
+  "description": "js-yaml Schema for handling Cloudformation's custom classes",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc tape test.js | tap-diff"
+  },
+  "author": "Joel Haubold",
+  "license": "MIT",
+  "keywords": [
+    "cloudformation",
+    "yaml parser",
+    "custom class",
+    "!Ref",
+    "!Sub",
+    "!GetAtt",
+    "!If"
+  ],
+  "dependencies": {},
+  "peerDependencies": {
+    "js-yaml": "^3.8.4"
+  },
+  "devDependencies": {
+    "js-yaml": "^3.8.4",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.6.3"
+  }
+}
