@@ -214,13 +214,3 @@ test('yaml parser should', function (t) {
 
   t.end()
 })
-
-/* todo
-
-readme
-repo
-review
-
-publish
-
-*/
