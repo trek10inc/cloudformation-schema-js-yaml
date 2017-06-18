@@ -2,7 +2,7 @@
 
 Cloudformation supports custom yaml classes, e.g. `!Ref`, `!Sub`, `!If`, etc.
 Yaml parsers will choke on these custom classes unless the classes are specified.
-Use this library with `js-yaml` to parse cloudformation templates with these classes. The cloudformation classes are converted into objects that are similar to the non custom class syntax e.g. `Ref`, `Fn::Sub`, `!If`
+Use this library with `js-yaml` to parse cloudformation templates with these classes. The cloudformation classes are converted into objects that are similar to the non custom class syntax e.g. `Ref`, `Fn::Sub`, `Fn::If`
 
 ## Usage
 ```
