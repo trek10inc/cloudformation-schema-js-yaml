@@ -40,7 +40,13 @@ test('yaml parser should', function (t) {
   t.deepEquals(
     yaml.safeLoad(`test: !GetAtt logicalId.attribute`, { schema }),
     { test: { 'Fn::GetAtt': [ 'logicalId', 'attribute' ]}},
-    'parse !GetAtt'
+    'parse !GetAtt string params'
+  )
+
+  t.deepEquals(
+    yaml.safeLoad(`test: !GetAtt [ logicalId, attribute ] `, { schema }),
+    { test: { 'Fn::GetAtt': [ 'logicalId', 'attribute' ]}},
+    'parse !GetAtt array params'
   )
 
   t.deepEquals(
