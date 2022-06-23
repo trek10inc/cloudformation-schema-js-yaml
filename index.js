@@ -2,7 +2,7 @@
 
 const yaml = require('js-yaml');
 
-module.exports = yaml.Schema.create([
+module.exports = yaml.DEFAULT_SCHEMA.extend([
   require('./lib/and.js'),
   require('./lib/base64.js'),
   require('./lib/equals.js'),
