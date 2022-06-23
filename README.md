@@ -11,7 +11,7 @@ const schema = require('cloudformation-schema-js-yaml');
 const fs = require('fs');
 
 let file = fs.readFileSync('somefile.yaml');
-let data = yaml.safeLoad(file, { schema: schema});
+let data = yaml.load(file, { schema: schema});
 ```
 
 ## Example
@@ -25,7 +25,7 @@ test:
 Program extract
 ```
 let file = fs.readFileSync('sample.yaml');
-let data = yaml.safeLoad(file, { schema: schema});
+let data = yaml.load(file, { schema: schema});
 console.log(data)
 console.log('%j', data)
 ```
