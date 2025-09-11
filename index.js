@@ -5,6 +5,7 @@ const yaml = require('js-yaml');
 module.exports = yaml.DEFAULT_SCHEMA.extend([
   require('./lib/and.js'),
   require('./lib/base64.js'),
+  require('./lib/condition.js'),
   require('./lib/equals.js'),
   require('./lib/findInMap.js'),
   require('./lib/getAtt.js'),
