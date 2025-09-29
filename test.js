@@ -24,6 +24,12 @@ test('yaml parser should', function (t) {
   )
 
   t.deepLooseEqual(
+    yaml.load(`test: !Condition SomeString`, { schema }),
+    { test: { 'Fn::Condition': 'SomeString' } },
+    'parse !Condition'
+  )
+
+  t.deepLooseEqual(
     yaml.load(`test: !Equals [ 'a', 'b' ]`, { schema }),
     { test: { 'Fn::Equals': [ 'a', 'b' ]}},
     'parse !Equals'
@@ -143,6 +149,7 @@ test('yaml parser should', function (t) {
     - !And ['a', 'b', 'c']
     - !Base64 { Ref: LogicalId }
     - !Base64 string
+    - !Condition string
     - !Equals [ 'a', 'b' ]
     - !FindInMap [ "a", "b", "c" ]
     - !If ['a', 'b' ,'c' ]
@@ -171,6 +178,7 @@ test('yaml parser should', function (t) {
   - !Base64
     Ref: LogicalId
   - !Base64 string
+  - !Condition string
   - !Equals
     - a
     - b
