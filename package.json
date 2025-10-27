@@ -1,10 +1,14 @@
 {
   "name": "cloudformation-schema-js-yaml",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "js-yaml Schema for handling Cloudformation's custom classes",
   "main": "index.js",
   "scripts": {
     "test": "nyc tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trek10inc/cloudformation-schema-js-yaml"
   },
   "author": "Joel Haubold",
   "license": "MIT",
